@@ -54,9 +54,10 @@ def karatsuba2(a, b):
                 digits['y_h']*digits['x_l'])*10 + 
                 digits['x_l']*digits['y_l'])
     else:
-        return (karatsuba(x_h, y_h)*10**n + 
-               (karatsuba(x_h, y_l) + karatsuba(y_h, x_l))*10**(n/2) + 
-               karatsuba(x_l, y_l))
+        return (karatsuba(digits['x_h'], digits['y_h'])*10**n + 
+               (karatsuba(digits['x_h'], digits['y_l']) + 
+                karatsuba(digits['y_h'], digits['x_l']))*10**(n/2) + 
+               karatsuba(digits['x_l'], digits['y_l']))
 
 def multiply(x_h, x_l, y_h, y_l):
     return x_h*y_h*100 + (x_h*y_l + y_h*x_l)*10 + x_l*y_l
@@ -69,8 +70,8 @@ def main(argv):
         sys.exit(2)
 	
     print karatsuba(a, b)
-    print grade_school(a, b)
-    print karatsuba2(a, b)
+    # rint grade_school(a, b)
+    # print karatsuba2(a, b)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
