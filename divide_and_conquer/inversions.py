@@ -1,12 +1,13 @@
 '''
 Calculate the number of inversions between two lists
 Input: list to be examined and sorted
-Output: tuple of number of inersions and the sorted list
+Output: tuple of number of inversions and the sorted list
 
 Examples:
 [0, 1, 2, 3] ==> (0, [0, 1, 2, 3])
 [2, 1] ==> (1, [1, 2])  
 '''
+import csv
 
 def inversions(n):
     if len(n) == 1:
@@ -30,3 +31,11 @@ def inversions(n):
         else:
             new_n.extend(left)
         return inv, new_n
+
+
+with open('integerarray.csv','rb') as f:
+    reader = csv.reader(f)
+    num = list(reader)
+flat = [int(i[0]) for i in num]
+
+print inversions(flat)[0]
